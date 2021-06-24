@@ -24,7 +24,7 @@ public class MinioResource {
         return minioService.listAllBuckets();
     }
 
-    @GetMapping("/{path}/files")
+    @GetMapping("/{path}/objects")
     public List<String> listObjects(
             @PathVariable("path") String path
     ) throws Exception {
