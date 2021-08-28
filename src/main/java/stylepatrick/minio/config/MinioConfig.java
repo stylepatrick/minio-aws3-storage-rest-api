@@ -1,30 +1,26 @@
 package stylepatrick.minio.config;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
-@Configuration
+@Component
+@ConfigurationProperties("minio")
+@Validated
+@Setter
 @Getter
-@Setter(AccessLevel.PROTECTED)
 public class MinioConfig {
 
-    @Value("${minio.access.name}")
-    String accessKey;
+    private String user;
 
-    @Value("${minio.access.secret}")
-    String accessSecret;
+    private String pwd;
 
-    @Value("${minio.url}")
-    String minioUrl;
+    private String url;
 
-    @Value("${minio.bucket.name}")
-    String bucketName;
+    private String bucket;
 
-    @Value("${minio.default.folder}")
-    String defaultFolder;
-
+    private String defaultFolder;
 
 }

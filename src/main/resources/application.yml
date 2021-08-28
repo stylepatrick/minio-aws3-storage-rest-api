@@ -1,13 +1,3 @@
-minio:
-  bucket.name: ${BUCKET_NAME}
-  default:
-    folder: ${FOLDER}
-  access:
-    name: ${MINIO_USER}
-    secret: ${MINIO_SECRET}
-  url: ${MINIO_SERVER}
-server:
-  port: 8080
 spring:
   servlet:
     multipart:
@@ -15,3 +5,14 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
       file-size-threshold: 100MB
+
+server:
+  port: 8080
+
+minio:
+  bucket:
+  bucket.name: ${BUCKET_NAME}
+  defaultFolder: ${FOLDER}
+  user: ${MINIO_USER}
+  pwd: ${MINIO_SECRET}
+  url: ${MINIO_SERVER}

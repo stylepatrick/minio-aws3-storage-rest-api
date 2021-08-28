@@ -36,7 +36,7 @@ public class MinioService {
 
     public List<String> listObjects(String path) throws Exception {
         List<String> list = new ArrayList<>();
-        minioClient.listObjects(minioConfig.getBucketName(), minioConfig.getDefaultFolder() + "/" + path + "/").forEach(x -> {
+        minioClient.listObjects(minioConfig.getBucket(), minioConfig    .getDefaultFolder() + "/" + path + "/").forEach(x -> {
             try {
                 list.add(x.get().objectName());
             } catch (InvalidBucketNameException | NoSuchAlgorithmException | InsufficientDataException | IOException | InvalidKeyException | NoResponseException | XmlPullParserException | ErrorResponseException | InternalException e) {
@@ -53,7 +53,7 @@ public class MinioService {
         try {
             FileOutputStream iofs = new FileOutputStream(file);
             iofs.write(content);
-            minioClient.putObject(minioConfig.getBucketName(), minioConfig.getDefaultFolder() + "/" + path + "/" + objectName, file.getAbsolutePath());
+            minioClient.putObject(minioConfig.getBucket(), minioConfig.getDefaultFolder() + "/" + path + "/" + objectName, file.getAbsolutePath());
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -61,7 +61,7 @@ public class MinioService {
 
     public byte[] downloadObject(String path, String objectName) {
         try {
-            InputStream obj = minioClient.getObject(minioConfig.getBucketName(), minioConfig.getDefaultFolder() + "/" + path + "/" + objectName);
+            InputStream obj = minioClient.getObject(minioConfig.getBucket(), minioConfig.getDefaultFolder() + "/" + path + "/" + objectName);
 
             byte[] content = IOUtils.toByteArray(obj);
             obj.close();
@@ -74,7 +74,7 @@ public class MinioService {
 
     public String deleteObject(String path, String objectName) throws Exception {
         try {
-            minioClient.removeObject(minioConfig.getBucketName(), minioConfig.getDefaultFolder() + "/" + path + "/" + objectName);
+            minioClient.removeObject(minioConfig.getBucket(), minioConfig.getDefaultFolder() + "/" + path + "/" + objectName);
         } catch (Exception e) {
             return "failed to delete" + e.getMessage();
         }

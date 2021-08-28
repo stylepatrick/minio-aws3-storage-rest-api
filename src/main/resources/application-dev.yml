@@ -1,13 +1,3 @@
-minio:
-  bucket.name: bucket
-  default:
-    folder: test
-  access:
-    name: minio
-    secret: minio123
-  url: http://127.0.0.1:9000
-server:
-  port: 8080
 spring:
   servlet:
     multipart:
@@ -15,3 +5,13 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
       file-size-threshold: 100MB
+
+server:
+  port: 8080
+
+minio:
+  bucket: bucket
+  defaultFolder: test
+  user: minio
+  pwd: minio123
+  url: http://127.0.0.1:9000

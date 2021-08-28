@@ -14,7 +14,7 @@ public class MinioClient {
     @Bean
     public io.minio.MinioClient generateMinioClient() {
         try {
-            io.minio.MinioClient client = new io.minio.MinioClient(minioConfig.getMinioUrl(), minioConfig.getAccessKey(), minioConfig.getAccessSecret());
+            io.minio.MinioClient client = new io.minio.MinioClient(minioConfig.getUrl(), minioConfig.getUser(), minioConfig.getPwd());
             return client;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
